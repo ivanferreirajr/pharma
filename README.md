@@ -5,9 +5,9 @@ que são/podem ser vendidos em farmácias.
 
 ## BACKEND
 
-[X] - Preparar arquivos e pastas
-[X] - CRUD Usuario
-[X] - CRUD Telefone
+- [X] - Preparar arquivos e pastas
+- [X] - CRUD Usuario
+- [X] - CRUD Telefone
 [] - Autenticação Usuario
 [] - Troca de senha
 [] - (?) Esqueci minha senha 
