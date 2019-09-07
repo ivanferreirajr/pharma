@@ -110,14 +110,6 @@ CREATE TABLE IF NOT EXISTS Farmacia(
 		ON UPDATE CASCADE
 );
 
-  
-   
-	PRIMARY KEY (crm)
-);
-
-
-
-CREATE TABLE IF NOT EXISTS Receita (
  
 CREATE TABLE IF NOT EXISTS Usuario (
 	id_usuario SERIAL,
