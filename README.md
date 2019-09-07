@@ -10,7 +10,6 @@ que são/podem ser vendidos em farmácias.
 - [X] - CRUD Telefone
 - [ ] - Autenticação Usuario
 - [ ] - Troca de senha
-- [ ] - (?) Esqueci minha senha 
 - [ ] - CRUD Cliente
 - [ ] - CRUD Entregador
 - [ ] - CRUD Veiculo
@@ -25,3 +24,7 @@ que são/podem ser vendidos em farmácias.
 - [ ] - CRUD Estoque
 - [ ] - CRUD Pedido
 - [ ] - CRUD Itens do Pedido
+
+## MAYBE
+
+- [ ] - Esqueci minha senha 
