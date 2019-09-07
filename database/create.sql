@@ -112,11 +112,17 @@ CREATE TABLE IF NOT EXISTS Farmacia(
 
   
    
+	PRIMARY KEY (crm)
+);
+
+
+
+CREATE TABLE IF NOT EXISTS Receita (
  
 CREATE TABLE IF NOT EXISTS Usuario (
 	id_usuario SERIAL,
 	email VARCHAR(100) NOT NULL UNIQUE,
-	senha VARCHAR(20) NOT NULL,
+	senha VARCHAR(100) NOT NULL,
 	nome VARCHAR(255) NOT NULL,
 	data_nasc DATE NOT NULL,
 	id_carteira INT NULL,  
