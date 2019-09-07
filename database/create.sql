@@ -282,7 +282,6 @@ CREATE TABLE IF NOT EXISTS Estoque (
 );
 
 
-
 CREATE TABLE IF NOT EXISTS Itens_Pedido (
 	id_pedido INT NOT NULL,
 	nome_produto VARCHAR(100) NOT NULL,
