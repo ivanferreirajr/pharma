@@ -134,10 +134,11 @@ CREATE TABLE IF NOT EXISTS Usuario (
  
  
 CREATE TABLE IF NOT EXISTS Telefone(
+	id_telefone SERIAL,	
 	num_telefone VARCHAR(20) NOT NULL,
-  id_usuario INT NOT NULL,
+	id_usuario INT NOT NULL,
 
-	PRIMARY KEY (num_telefone),
+	PRIMARY KEY (id_telefone),
 
   CONSTRAINT fk_id_usuario
       FOREIGN KEY (id_usuario)
