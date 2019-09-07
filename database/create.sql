@@ -115,11 +115,10 @@ CREATE TABLE IF NOT EXISTS Farmacia(
  
 CREATE TABLE IF NOT EXISTS Usuario (
 	id_usuario SERIAL,
-	login VARCHAR(50) NOT NULL UNIQUE,
+	email VARCHAR(100) NOT NULL UNIQUE,
 	senha VARCHAR(20) NOT NULL,
 	nome VARCHAR(255) NOT NULL,
 	data_nasc DATE NOT NULL,
-	email VARCHAR(100) NOT NULL,
 	id_carteira INT NULL,  
   
 	PRIMARY KEY (id_usuario),
