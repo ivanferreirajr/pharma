@@ -5,12 +5,14 @@ import {
   getUser,
   getOneUser,
   deleteUser,
-  updateUser
+  updateUser,
+  authenticateUser
 } from "../controllers/user.controller";
 
 const router = Router();
 // /api/usuarios
-router.post("/", createUser);
+router.post("/register/", createUser);
+router.post("/authenticate/", authenticateUser);
 router.get("/", getUser);
 router.get("/:id", getOneUser);
 router.delete("/:id", deleteUser);
