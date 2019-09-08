@@ -1,3 +1,4 @@
+import bcrypt from "bcryptjs";
 import Usuario from "../models/user";
 
 export async function getUser(req, res) {
@@ -12,34 +13,51 @@ export async function getUser(req, res) {
 }
 
 export async function createUser(req, res) {
-  const { login, senha, nome, dataNasc, email, idCarteira } = req.body;
+  const { email, senha, nome, dataNasc, idCarteira } = req.body;
   try {
+    if (await Usuario.findOne({ where: { email } })) {
+      return res.status(400).send({ error: "User already exists" });
+    }
     const newUser = await Usuario.create(
       {
-        login,
+        email,
         senha,
         nome,
         data_nasc: dataNasc,
-        email,
         id_carteira: idCarteira
       },
       {
-        fields: ["login", "senha", "nome", "data_nasc", "email", "id_carteira"]
+        fields: ["email", "senha", "nome", "data_nasc", "id_carteira"]
       }
     );
-    if (newUser) {
-      return res.json({
-        message: "User created successfully",
-        data: newUser
-      });
-    }
-  } catch (e) {
-    console.log(e);
-    res.status(500).json({
+
+    newUser.senha = undefined;
+
+    return res.json({
+      message: "User created successfully",
+      data: newUser
+    });
+  } catch (err) {
+    console.log(err);
+    return res.status(400).json({
       message: "Something goes wrong...",
-      error: e.name
+      error: err.name
     });
   }
+}
+
+export async function authenticateUser(req, res) {
+  const { email, senha } = req.body;
+
+  const user = await Usuario.findOne({ where: { email } });
+  if (!user) {
+    return res.status(400).send({ error: "User not found" });
+  }
+  if (!(await bcrypt.compare(senha, user.senha))) {
+    return res.status(400).send({ error: "Invalid password" });
+  }
+  user.senha = undefined;
+  res.send({ user });
 }
 
 export async function getOneUser(req, res) {
@@ -76,11 +94,10 @@ export async function updateUser(req, res) {
     const users = await Usuario.findAll({
       attributes: [
         "id_usuario",
-        "login",
+        "email",
         "senha",
         "nome",
         "data_nasc",
-        "email",
         "id_carteira"
       ],
       where: {
@@ -92,7 +109,6 @@ export async function updateUser(req, res) {
       users.forEach(async user => {
         await user.update({
           id_usuario: id,
-          login,
           senha,
           nome,
           data_nasc: dataNasc,
