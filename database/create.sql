@@ -117,7 +117,12 @@ CREATE TABLE IF NOT EXISTS Usuario (
 	senha VARCHAR(100) NOT NULL,
 	nome VARCHAR(255) NOT NULL,
 	data_nasc DATE NOT NULL,
-	id_carteira INT NULL,  
+	id_carteira INT NOT NULL,
+	tipo_cliente BOOLEAN,
+	tipo_farmaceutico BOOLEAN,
+	tipo_entregador BOOLEAN,
+	
+	
   
 	PRIMARY KEY (id_usuario),
   
