@@ -12,31 +12,31 @@ que são/podem ser vendidos em farmácias.
 - [X] - Autenticação Usuario
 - [X] - Model Carteira
 - [ ] - Controller Carteira
-- [ ] - Model Cliente
+- [X] - Model Cliente
 - [ ] - Controller Cliente
-- [ ] - Model Entregador
+- [X] - Model Entregador
 - [ ] - Controller Entregador
-- [ ] - Model Veiculo
+- [X] - Model Veiculo
 - [ ] - Controller Veiculo
-- [ ] - Model Farmacêutico
+- [X] - Model Farmacêutico
 - [ ] - Controller Farmacêutico
 - [X] - Model Cartao
 - [X] - Controller Cartao
-- [ ] - Model Medico
+- [X] - Model Medico
 - [ ] - Controller Medico
-- [ ] - Model Receita
+- [X] - Model Receita
 - [ ] - Controller Receita
-- [ ] - Model Endereço
+- [X] - Model Endereço
 - [ ] - Controller Endereço
-- [ ] - Model Produto
+- [X] - Model Produto
 - [ ] - Controller Produto
-- [ ] - Model Farmácia
+- [X] - Model Farmácia
 - [ ] - Controller Farmácia
-- [ ] - Model Estoque
+- [X] - Model Estoque
 - [ ] - Controller Estoque
-- [ ] - Model Pedido
+- [X] - Model Pedido
 - [ ] - Controller Pedido
-- [ ] - Model Itens do Pedido
+- [X] - Model Itens do Pedido
 - [ ] - Controller Itens do Pedido
 
 ## FrontEnd
