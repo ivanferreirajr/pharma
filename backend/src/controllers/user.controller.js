@@ -1,5 +1,13 @@
 import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
 import Usuario from "../models/user";
+import authConfig from "../config/auth";
+
+function generateToken(params = {}) {
+  return jwt.sign(params, authConfig.secret, {
+    expiresIn: 86400
+  });
+}
 
 export async function getUser(req, res) {
   try {
@@ -13,7 +21,16 @@ export async function getUser(req, res) {
 }
 
 export async function createUser(req, res) {
-  const { email, senha, nome, dataNasc, idCarteira } = req.body;
+  const {
+    email,
+    senha,
+    nome,
+    dataNasc,
+    idCarteira,
+    tipoCliente,
+    tipoFarmaceutico,
+    tipoEntregador
+  } = req.body;
   try {
     if (await Usuario.findOne({ where: { email } })) {
       return res.status(400).send({ error: "User already exists" });
@@ -24,10 +41,22 @@ export async function createUser(req, res) {
         senha,
         nome,
         data_nasc: dataNasc,
-        id_carteira: idCarteira
+        id_carteira: idCarteira,
+        tipo_cliente: tipoCliente,
+        tipo_farmaceutico: tipoFarmaceutico,
+        tipo_entregador: tipoEntregador
       },
       {
-        fields: ["email", "senha", "nome", "data_nasc", "id_carteira"]
+        fields: [
+          "email",
+          "senha",
+          "nome",
+          "data_nasc",
+          "id_carteira",
+          "tipo_cliente",
+          "tipo_farmaceutico",
+          "tipo_entregador"
+        ]
       }
     );
 
@@ -35,7 +64,8 @@ export async function createUser(req, res) {
 
     return res.json({
       message: "User created successfully",
-      data: newUser
+      data: newUser,
+      token: generateToken({ id: newUser.id_usuario })
     });
   } catch (err) {
     console.log(err);
@@ -57,7 +87,8 @@ export async function authenticateUser(req, res) {
     return res.status(400).send({ error: "Invalid password" });
   }
   user.senha = undefined;
-  res.send({ user });
+
+  res.send({ user, token: generateToken({ id: user.id_usuario }) });
 }
 
 export async function getOneUser(req, res) {
@@ -89,7 +120,16 @@ export async function deleteUser(req, res) {
 
 export async function updateUser(req, res) {
   const { id } = req.params;
-  const { login, senha, nome, dataNasc, email, idCarteira } = req.body;
+  const {
+    senha,
+    nome,
+    dataNasc,
+    email,
+    idCarteira,
+    tipoCliente,
+    tipoFarmaceutico,
+    tipoEntregador
+  } = req.body;
   try {
     const users = await Usuario.findAll({
       attributes: [
@@ -98,7 +138,10 @@ export async function updateUser(req, res) {
         "senha",
         "nome",
         "data_nasc",
-        "id_carteira"
+        "id_carteira",
+        "tipo_cliente",
+        "tipo_farmaceutico",
+        "tipo_entregador"
       ],
       where: {
         id_usuario: id
@@ -113,7 +156,10 @@ export async function updateUser(req, res) {
           nome,
           data_nasc: dataNasc,
           email,
-          id_carteira: idCarteira
+          id_carteira: idCarteira,
+          tipo_cliente: tipoCliente,
+          tipo_farmaceutico: tipoFarmaceutico,
+          tipo_entregador: tipoEntregador
         });
       });
     }
