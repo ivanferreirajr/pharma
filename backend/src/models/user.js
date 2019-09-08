@@ -1,17 +1,15 @@
 import Sequelize from "sequelize";
-import { sequelize } from "../database/database";
+import bcrypt from "bcryptjs";
+import { sequelizeAmazon } from "../database/database";
 
 import PhoneNumber from "./phone";
 
-const Usuario = sequelize.define(
+const Usuario = sequelizeAmazon.define(
   "usuario",
   {
     id_usuario: {
       type: Sequelize.INTEGER,
       primaryKey: true
-    },
-    login: {
-      type: Sequelize.TEXT
     },
     senha: {
       type: Sequelize.TEXT
@@ -27,12 +25,32 @@ const Usuario = sequelize.define(
     },
     id_carteira: {
       type: Sequelize.INTEGER
+    },
+    tipo_entregador: {
+      type: Sequelize.BOOLEAN
+    },
+    tipo_farmaceutico: {
+      type: Sequelize.BOOLEAN
+    },
+    tipo_cliente: {
+      type: Sequelize.BOOLEAN
     }
   },
   {
     schema: "pharma",
     timestamps: false,
-    freezeTableName: true
+    freezeTableName: true,
+    hooks: {
+      beforeCreate: user => {
+        const salt = bcrypt.genSaltSync();
+        user.senha = bcrypt.hashSync(user.senha, salt);
+      }
+    },
+    instanceMethods: {
+      validPassword(senha) {
+        return bcrypt.compareSync(senha, this.senha);
+      }
+    }
   }
 );
 

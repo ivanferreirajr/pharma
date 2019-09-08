@@ -1,7 +1,7 @@
 import Sequelize from "sequelize";
-import { sequelize } from "../database/database";
+import { sequelizeAmazon } from "../database/database";
 
-const Phone = sequelize.define(
+const Phone = sequelizeAmazon.define(
   "telefone",
   {
     id_telefone: {
