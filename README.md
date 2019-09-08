@@ -5,24 +5,39 @@ que são/podem ser vendidos em farmácias.
 
 ## BackEnd
 
-- [X] - Preparar arquivos e pastas
-- [X] - CRUD Usuario
-- [X] - CRUD Telefone
+- [X] - Model Usuario
+- [X] - Controller Usuario
+- [X] - Model Telefone
+- [X] - Controller Telefone
 - [X] - Autenticação Usuario
-- [ ] - CRUD Carteira - juntamente com a criação do usuario
-- [ ] - CRUD Cliente
-- [ ] - CRUD Entregador
-- [ ] - CRUD Veiculo
-- [ ] - CRUD Farmacêutico
-- [ ] - CRUD Cartão
-- [X] - CRUD Medico -- padrao no banco
-- [ ] - CRUD Receita
-- [ ] - CRUD Endereço
-- [ ] - CRUD Produto
-- [X] - CRUD Farmácia -- padrao no banco
-- [ ] - CRUD Estoque
-- [ ] - CRUD Pedido
-- [ ] - CRUD Itens do Pedido
+- [X] - Model Carteira
+- [ ] - Controller Carteira
+- [ ] - Model Cliente
+- [ ] - Controller Cliente
+- [ ] - Model Entregador
+- [ ] - Controller Entregador
+- [ ] - Model Veiculo
+- [ ] - Controller Veiculo
+- [ ] - Model Farmacêutico
+- [ ] - Controller Farmacêutico
+- [X] - Model Cartao
+- [X] - Controller Cartao
+- [ ] - Model Medico
+- [ ] - Controller Medico
+- [ ] - Model Receita
+- [ ] - Controller Receita
+- [ ] - Model Endereço
+- [ ] - Controller Endereço
+- [ ] - Model Produto
+- [ ] - Controller Produto
+- [ ] - Model Farmácia
+- [ ] - Controller Farmácia
+- [ ] - Model Estoque
+- [ ] - Controller Estoque
+- [ ] - Model Pedido
+- [ ] - Controller Pedido
+- [ ] - Model Itens do Pedido
+- [ ] - Controller Itens do Pedido
 
 ## FrontEnd
 
