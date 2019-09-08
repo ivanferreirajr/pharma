@@ -8,13 +8,12 @@ que são/podem ser vendidos em farmácias.
 - [X] - Preparar arquivos e pastas
 - [X] - CRUD Usuario
 - [X] - CRUD Telefone
-- [ ] - Autenticação Usuario
-- [ ] - Troca de senha
+- [X] - Autenticação Usuario
+- [ ] - CRUD Carteira
 - [ ] - CRUD Cliente
 - [ ] - CRUD Entregador
 - [ ] - CRUD Veiculo
 - [ ] - CRUD Farmacêutico
-- [ ] - CRUD Carteira
 - [ ] - CRUD Cartão
 - [ ] - CRUD Medico
 - [ ] - CRUD Receita
@@ -28,3 +27,5 @@ que são/podem ser vendidos em farmácias.
 ## MAYBE
 
 - [ ] - Esqueci minha senha 
+- [ ] - Formatação dos dados
+- [ ] - Troca de senha
