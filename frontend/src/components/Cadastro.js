@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import bgImg from '../images/tablets-3532308_1920.jpg';
-// import axios from 'axios';
+import axios from 'axios';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css'
 
@@ -35,8 +35,23 @@ export default class Cadastro extends Component {
 
   // ainda nao consegui colocar o background full, dá pra usar alterando o heidth com pixel, porém vai ficar estranho em computadores com tela menores/maioires, nao achei nada a respeito
 
-  onSubmit = e => {
+  onSubmit = async e => {
     console.log(this.state.nome, this.state.senha, this.state.email, this.telefone)
+    
+    /* const newUser = {
+      email: this.state.email,
+      senha: this.state.senha,
+      nome: this.state.senha,
+      dataNasc: this.state.date, // testar o tratamento de data
+      
+      idCarteira, // backend fará isso, sempre que solicitado criar usuario ele irá criar uma carteira e retornar o id da carteira para adicionar ao novo usuario
+      tipoCliente, // frontend => update user?
+      tipoFarmaceutico, // frontend => update user?
+      tipoEntregador // frontend => update user?
+    };
+    const res = await axios.post('http://localhost:4000/api/usuario/register', newUser);
+    console.log(res); */
+
     e.preventDefault();
   }
 
