@@ -26,13 +26,14 @@ const Usuario = sequelizeAmazon.define(
     id_carteira: {
       type: Sequelize.INTEGER
     },
-    tipo_entregador: {
+    tipo_cliente: {
       type: Sequelize.BOOLEAN
     },
+
     tipo_farmaceutico: {
       type: Sequelize.BOOLEAN
     },
-    tipo_cliente: {
+    tipo_entregador: {
       type: Sequelize.BOOLEAN
     }
   },
