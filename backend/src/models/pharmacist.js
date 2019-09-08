@@ -1,15 +1,12 @@
 import Sequelize from "sequelize";
 import { sequelizeAmazon } from "../database/database";
 
-const Phone = sequelizeAmazon.define(
-  "telefone",
+const Pharmacist = sequelizeAmazon.define(
+  "farmaceutico",
   {
-    id_telefone: {
-      type: Sequelize.INTEGER,
-      primaryKey: true
-    },
-    num_telefone: {
+    crf: {
       type: Sequelize.TEXT,
+      primaryKey: true,
       required: true
     },
     id_usuario: {
@@ -24,4 +21,4 @@ const Phone = sequelizeAmazon.define(
   }
 );
 
-export default Phone;
+export default Pharmacist;

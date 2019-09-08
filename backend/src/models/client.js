@@ -1,15 +1,14 @@
 import Sequelize from "sequelize";
 import { sequelizeAmazon } from "../database/database";
 
-const Phone = sequelizeAmazon.define(
-  "telefone",
+import Order from "./order";
+
+const Client = sequelizeAmazon.define(
+  "cliente",
   {
-    id_telefone: {
-      type: Sequelize.INTEGER,
-      primaryKey: true
-    },
-    num_telefone: {
+    cpf: {
       type: Sequelize.TEXT,
+      primaryKey: true,
       required: true
     },
     id_usuario: {
@@ -24,4 +23,14 @@ const Phone = sequelizeAmazon.define(
   }
 );
 
-export default Phone;
+Client.hasOne(Order, {
+  foreingKey: "cpf",
+  sourceKey: "cpf"
+});
+
+Order.belongsTo(Client, {
+  foreingKey: "cpf",
+  sourceKey: "cpf"
+});
+
+export default Client;

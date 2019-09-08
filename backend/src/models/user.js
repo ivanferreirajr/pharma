@@ -2,9 +2,12 @@ import Sequelize from "sequelize";
 import bcrypt from "bcryptjs";
 import { sequelizeAmazon } from "../database/database";
 
-import PhoneNumber from "./phone";
+import Phone from "./phone";
+import Client from "./client";
+import Pharmacist from "./pharmacist";
+import DeliveryMan from "./deliveryman";
 
-const Usuario = sequelizeAmazon.define(
+const User = sequelizeAmazon.define(
   "usuario",
   {
     id_usuario: {
@@ -12,19 +15,24 @@ const Usuario = sequelizeAmazon.define(
       primaryKey: true
     },
     senha: {
-      type: Sequelize.TEXT
+      type: Sequelize.TEXT,
+      required: true
     },
     nome: {
-      type: Sequelize.TEXT
+      type: Sequelize.TEXT,
+      required: true
     },
     data_nasc: {
-      type: Sequelize.DATE
+      type: Sequelize.DATE,
+      required: true
     },
     email: {
-      type: Sequelize.TEXT
+      type: Sequelize.TEXT,
+      required: true
     },
     id_carteira: {
-      type: Sequelize.INTEGER
+      type: Sequelize.INTEGER,
+      required: true
     },
     tipo_cliente: {
       type: Sequelize.BOOLEAN
@@ -55,12 +63,44 @@ const Usuario = sequelizeAmazon.define(
   }
 );
 
-Usuario.hasMany(PhoneNumber, {
+User.hasMany(Phone, {
   foreingKey: "id_usuario",
   sourceKey: "id_usuario"
 });
-PhoneNumber.belongsTo(Usuario, {
+
+Phone.belongsTo(User, {
   foreingKey: "id_usuario",
   sourceKey: "id_usuario"
 });
-export default Usuario;
+
+User.hasOne(Client, {
+  foreingKey: "id_usuario",
+  sourceKey: "id_usuario"
+});
+
+Client.belongsTo(User, {
+  foreingKey: "id_usuario",
+  sourceKey: "id_usuario"
+});
+
+User.hasOne(Pharmacist, {
+  foreingKey: "id_usuario",
+  sourceKey: "id_usuario"
+});
+
+Pharmacist.belongsTo(User, {
+  foreingKey: "id_usuario",
+  sourceKey: "id_usuario"
+});
+
+User.hasOne(DeliveryMan, {
+  foreingKey: "id_usuario",
+  sourceKey: "id_usuario"
+});
+
+DeliveryMan.belongsTo(User, {
+  foreingKey: "id_usuario",
+  sourceKey: "id_usuario"
+});
+
+export default User;
